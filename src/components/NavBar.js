@@ -5,7 +5,7 @@ import { FaBars } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import shoppingCart from '../assets/shopping.png';
 
-const NavBar = () => (
+const NavBar = ({ isBarActive, setIsBarActive }) => (
   <Nav>
     <NavLink to="/products"><img alt="logo" src={logo} width="80px" height="80%" /></NavLink>
     <NavMenu>
@@ -14,9 +14,9 @@ const NavBar = () => (
       <NavLink to="/contact" activeStyle><h1>Contact</h1></NavLink>
     </NavMenu>
     <NavLink to="/cart" activeStyle>
-      <img alt="logo" style={{ color: 'white' }} src={shoppingCart} width="80px" height="80%" />
+      <img alt="logo" src={shoppingCart} width="80px" height="80%" />
     </NavLink>
-    <Bars />
+    <Bars onClick={() => setIsBarActive(!isBarActive)} />
   </Nav>
 );
 export default NavBar;
