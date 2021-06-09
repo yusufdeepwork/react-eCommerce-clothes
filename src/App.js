@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter, Switch, Route, Redirect,
-} from 'react-router-dom';
-import { ToastProvider } from 'react-toast-notifications';
-
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import BarItems from './components/BarItems';
 import Products from './pages/Products';
@@ -28,11 +24,9 @@ function App() {
           />
         ) : null}
         <Switch>
-          <ToastProvider>
-            <Route path="/products" exact component={Products} />
-            <Route path="/favorites" component={Favorites} />
-            <Redirect exact to="/products" />
-          </ToastProvider>
+          <Route path="/products" exact component={Products} />
+          <Route path="/favorites" exact component={Favorites} />
+
         </Switch>
       </BrowserRouter>
     </ProductContext.Provider>
