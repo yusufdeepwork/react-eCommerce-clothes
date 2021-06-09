@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ToastProvider } from 'react-toast-notifications';
+
 import NavBar from './components/NavBar';
 import BarItems from './components/BarItems';
 import Products from './pages/Products';
@@ -24,9 +26,10 @@ function App() {
           />
         ) : null}
         <Switch>
-          <Route path="/products" exact component={Products} />
-          <Route path="/favorites" exact component={Favorites} />
-
+          <ToastProvider>
+            <Route path="/products" exact component={Products} />
+            <Route path="/favorites" exact component={Favorites} />
+          </ToastProvider>
         </Switch>
       </BrowserRouter>
     </ProductContext.Provider>
