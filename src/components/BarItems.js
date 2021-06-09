@@ -27,7 +27,6 @@ const BarItemContainer = styled.nav`
   @media screen and (max-width: 768px){
     padding: 0;
   }
-    background: lawngreen;
   
 `;
 
