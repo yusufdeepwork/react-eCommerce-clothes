@@ -1,21 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import ProductContext from '../context/ProductContext';
 
-const ProductItem = ({ product }) => (
-  <ProductCart>
-    <ProductImage src={product.clothesUrl} alt="selam" />
-    <ProductBar>
-      <ProductPrice>{product.price}</ProductPrice>
-    </ProductBar>
+const ProductItem = ({ product, favorite }) => {
+  const { setFavorites, favorites } = useContext(ProductContext);
 
-    <ProductBar>
-      <InfoProduct>Add To Cart</InfoProduct>
-      <InfoProduct>See Details</InfoProduct>
-      <InfoProduct>Add To Favorites</InfoProduct>
-    </ProductBar>
+  const addFavorite = () => {
+    const copyFavoriteArray = [...favorites];
+    const isInProduct = copyFavoriteArray.map((copyProduct) => copyProduct.id).includes(product.id);
+    if (!isInProduct && favorites) {
+      setFavorites((prevFavorites) => [...prevFavorites, product]);
+    }
+  };
 
-  </ProductCart>
-);
+  const removeFavorite = () => {
+    const copyFavoriteArray = [...favorites];
+    const isInProduct = copyFavoriteArray.map((copyProduct) => copyProduct.id).includes(product.id);
+    if (isInProduct && favorites) {
+      setFavorites(copyFavoriteArray.filter((item) => item.id !== product.id));
+    }
+  };
+
+  return (
+    <ProductCart>
+      <ProductImage src={product.clothesUrl} alt="selam" />
+      <ProductBar>
+        <ProductPrice>{product.price}</ProductPrice>
+      </ProductBar>
+
+      <ProductBar>
+        <InfoProduct>Add To Cart</InfoProduct>
+        <InfoProduct>See Details</InfoProduct>
+        <InfoProduct onClick={() => (favorite ? removeFavorite() : addFavorite())}>
+          {favorite ? 'Remove From Favorites ' : 'Add To Favorites'}
+        </InfoProduct>
+      </ProductBar>
+
+    </ProductCart>
+  );
+};
 export default ProductItem;
 
 const ProductCart = styled.div`
@@ -59,12 +82,12 @@ const ProductBar = styled.div`
 `;
 
 const ProductPrice = styled.text`
-  
+
   padding: 1rem;
   font-size: 1.5rem;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
-  
+
   @media screen and (max-width: 1300px){
     font-size: 1rem;
     padding: 0.5rem 0 0.5rem 0;
