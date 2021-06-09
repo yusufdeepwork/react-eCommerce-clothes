@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { useToasts } from 'react-toast-notifications';
 import ProductContext from '../context/ProductContext';
 
 const ProductItem = ({ product, favorite }) => {
   const { setFavorites, favorites } = useContext(ProductContext);
-
+  const { addToast } = useToasts();
   const addFavorite = () => {
     const copyFavoriteArray = [...favorites];
     const isInProduct = copyFavoriteArray.map((copyProduct) => copyProduct.id).includes(product.id);
@@ -21,6 +22,22 @@ const ProductItem = ({ product, favorite }) => {
     }
   };
 
+  const changeItem = () => {
+    if (favorite) {
+      removeFavorite();
+      addToast(`removed favorite :${product.description}`, {
+        appearance: 'info',
+        autoDismiss: true,
+      });
+    } else {
+      addFavorite();
+      addToast(`add favorite :${product.description}`, {
+        appearance: 'success',
+        autoDismiss: true,
+      });
+    }
+  };
+
   return (
     <ProductCart>
       <ProductImage src={product.clothesUrl} alt="selam" />
@@ -31,7 +48,7 @@ const ProductItem = ({ product, favorite }) => {
       <ProductBar>
         <InfoProduct>Add To Cart</InfoProduct>
         <InfoProduct>See Details</InfoProduct>
-        <InfoProduct onClick={() => (favorite ? removeFavorite() : addFavorite())}>
+        <InfoProduct onClick={() => changeItem()}>
           {favorite ? 'Remove From Favorites ' : 'Add To Favorites'}
         </InfoProduct>
       </ProductBar>
