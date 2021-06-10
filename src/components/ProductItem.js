@@ -1,68 +1,13 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { useToasts } from 'react-toast-notifications';
 import { Link } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 import { ProductContext } from '../context/ProductContext';
+import { addFavoriteToast, getAddCardToast, removeFavoriteToast } from './Toasts';
 
 const ProductItem = ({ product, favorite }) => {
+  const { addCard, changeItem } = useContext(ProductContext);
   const { addToast } = useToasts();
-  const {
-    setFavorites, favorites, setProductsInCard, productsInCard,
-  } = useContext(ProductContext);
-
-  const addFavorite = () => {
-    const copyFavoriteArray = [...favorites];
-    const isInProduct = copyFavoriteArray.map((copyProduct) => copyProduct.id).includes(product.id);
-    if (!isInProduct && favorites) {
-      setFavorites((prevFavorites) => [...prevFavorites, product]);
-    }
-  };
-
-  const removeFavorite = () => {
-    const copyFavoriteArray = [...favorites];
-    const isInProduct = copyFavoriteArray.map((copyProduct) => copyProduct.id).includes(product.id);
-    if (isInProduct && favorites) {
-      setFavorites(copyFavoriteArray.filter((item) => item.id !== product.id));
-    }
-  };
-
-  const changeItem = () => {
-    if (favorite) {
-      removeFavorite();
-      addToast(`removed favorite :${product.description}`, {
-        appearance: 'info',
-        autoDismiss: true,
-      });
-    } else {
-      addFavorite();
-      addToast(`add favorite :${product.description}`, {
-        appearance: 'success',
-        autoDismiss: true,
-      });
-    }
-  };
-  const addCard = () => {
-    const {
-      id, price, clothesUrl, description,
-    } = product;
-    if (productsInCard.length === 0) {
-      setProductsInCard([{
-        id, count: 1, price, clothesUrl, description,
-      }]);
-    } else if (productsInCard.find((item) => item.id === id)) {
-      // eslint-disable-next-line max-len
-      const updatedCard = productsInCard.map((item) => (item.id === id ? { ...item, count: item.count + 1 } : item));
-      setProductsInCard(updatedCard);
-    } else {
-      setProductsInCard((prevState) => [...prevState, {
-        id, count: 1, price, clothesUrl, description,
-      }]);
-    }
-    addToast(`added shopping card :${product.description}`, {
-      appearance: 'success',
-      autoDismiss: true,
-    });
-  };
 
   return (
     <ProductCart>
@@ -73,21 +18,25 @@ const ProductItem = ({ product, favorite }) => {
           {' TRY'}
         </ProductPrice>
       </ProductBar>
-
       <ProductBar>
-        <InfoProduct
-          onClick={() => addCard()}
+        <InfoProduct onClick={() => {
+          addCard(product);
+          getAddCardToast(product, addToast);
+        }}
         >
           Add To Cart
         </InfoProduct>
-        <ShowingDetails to={`/products/${product.id}`}>
-          See Details
-        </ShowingDetails>
-        <InfoProduct onClick={() => changeItem()}>
+        <ShowingDetails to={`/products/${product.id}`}>See Details</ShowingDetails>
+        <InfoProduct onClick={() => {
+          changeItem(product, favorite);
+          // eslint-disable-next-line no-unused-expressions
+          favorite ? removeFavoriteToast(product, addToast)
+            : addFavoriteToast(product, addToast);
+        }}
+        >
           {favorite ? 'Remove From Favorites ' : 'Add To Favorites'}
         </InfoProduct>
       </ProductBar>
-
     </ProductCart>
   );
 };
@@ -115,7 +64,7 @@ const ProductImage = styled.img`
 `;
 const InfoProduct = styled.text`
   display: flex;
-  padding: 1rem;
+  padding: 0.5rem;
   font-size: 20px;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;

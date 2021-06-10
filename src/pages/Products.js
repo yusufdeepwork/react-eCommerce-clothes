@@ -6,8 +6,7 @@ import { ProductContext } from '../context/ProductContext';
 
 const Products = () => {
   const apiUrl = 'https://60bfb0e797295a0017c4398c.mockapi.io/clothesImage';
-  const { data, setData } = useContext(ProductContext);
-
+  const { data, setData, favorites } = useContext(ProductContext);
   useEffect(() => {
     axios.get(apiUrl).then((response) => {
       setData(response.data);
@@ -21,7 +20,10 @@ const Products = () => {
     <>
       <ProductsContainer>
         {data.map((product) => (
-          <ProductItem product={product} />
+          <ProductItem
+            product={product}
+            favorite={!!favorites.find((favoriteItem) => favoriteItem.id === product.id)}
+          />
         ))}
 
       </ProductsContainer>

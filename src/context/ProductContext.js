@@ -15,6 +15,50 @@ const eCommerceApp = ({ children }) => {
   useEffect(() => {
   }, [isBarActive]);
 
+  const addFavorite = (favoriteProduct) => {
+    const copyFavoriteArray = [...favorites];
+    const isInProduct = copyFavoriteArray.map((copyProduct) => copyProduct.id)
+      .includes(favoriteProduct.id);
+    if (!isInProduct && favorites) {
+      setFavorites((prevFavorites) => [...prevFavorites, favoriteProduct]);
+    }
+  };
+
+  const removeFavorite = (removedfavorite) => {
+    const copyFavoriteArray = [...favorites];
+    const isInProduct = copyFavoriteArray.map((copyProduct) => copyProduct.id)
+      .includes(removedfavorite.id);
+    if (isInProduct && favorites) {
+      setFavorites(copyFavoriteArray.filter((item) => item.id !== removedfavorite.id));
+    }
+  };
+  const changeItem = (willChangeProduct, favorite) => {
+    if (favorite) {
+      removeFavorite(willChangeProduct);
+    } else {
+      addFavorite(willChangeProduct);
+    }
+  };
+
+  const addCard = (willAddCardProduct) => {
+    const {
+      id, price, clothesUrl, description,
+    } = willAddCardProduct;
+    if (productsInCard.length === 0) {
+      setProductsInCard([{
+        id, count: 1, price, clothesUrl, description,
+      }]);
+    } else if (productsInCard.find((item) => item.id === id)) {
+      // eslint-disable-next-line max-len
+      const updatedCard = productsInCard.map((item) => (item.id === id ? { ...item, count: item.count + 1 } : item));
+      setProductsInCard(updatedCard);
+    } else {
+      setProductsInCard((prevState) => [...prevState, {
+        id, count: 1, price, clothesUrl, description,
+      }]);
+    }
+  };
+
   return (
     <ProductContext.Provider value={{
       favorites,
@@ -25,6 +69,8 @@ const eCommerceApp = ({ children }) => {
       setData,
       isBarActive,
       setIsBarActive,
+      changeItem,
+      addCard,
     }}
     >
       <BrowserRouter>
