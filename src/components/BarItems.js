@@ -6,6 +6,9 @@ const BarItems = ({ isBarActive, setIsBarActive }) => {
   const onChangeBar = (active) => setIsBarActive(!active);
   return (
     <BarItemContainer>
+      <BarItem onClick={() => onChangeBar(isBarActive)} to="/card" activeStyle>
+        <h1>Shopping Card</h1>
+      </BarItem>
       <BarItem onClick={() => onChangeBar(isBarActive)} to="/favorites" activeStyle>
         <h1>Favorites</h1>
       </BarItem>

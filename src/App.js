@@ -37,7 +37,7 @@ function App() {
             <Switch>
               <Route path="/products" exact component={Products} />
               <Route path="/favorites" exact component={Favorites} />
-              <Route path="/cart" exact component={ShoppingCard} />
+              <Route path="/card" exact component={ShoppingCard} />
               <Redirect exact to="/products" />
             </Switch>
           </AlertProvider>
