@@ -11,11 +11,11 @@ const ProductItem = ({ product, favorite }) => {
 
   return (
     <ProductCart>
-      <ProductImage src={product.clothesUrl} alt="selam" />
+      <ProductImage src={product.clothesUrl} alt={product.id} />
       <ProductBar>
         <ProductPrice>
           {product.price}
-          {' TRY'}
+          TRY
         </ProductPrice>
       </ProductBar>
       <ProductBar>
@@ -34,6 +34,7 @@ const ProductItem = ({ product, favorite }) => {
             : addFavoriteToast(product, addToast);
         }}
         >
+
           {favorite ? 'Remove From Favorites ' : 'Add To Favorites'}
         </InfoProduct>
       </ProductBar>
