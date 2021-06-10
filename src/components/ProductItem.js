@@ -4,8 +4,11 @@ import { useToasts } from 'react-toast-notifications';
 import ProductContext from '../context/ProductContext';
 
 const ProductItem = ({ product, favorite }) => {
-  const { setFavorites, favorites } = useContext(ProductContext);
   const { addToast } = useToasts();
+  const {
+    setFavorites, favorites, setProductsInCard, productsInCard,
+  } = useContext(ProductContext);
+
   const addFavorite = () => {
     const copyFavoriteArray = [...favorites];
     const isInProduct = copyFavoriteArray.map((copyProduct) => copyProduct.id).includes(product.id);
@@ -37,16 +40,45 @@ const ProductItem = ({ product, favorite }) => {
       });
     }
   };
+  const addCard = () => {
+    const {
+      id, price, clothesUrl, description,
+    } = product;
+    if (productsInCard.length === 0) {
+      setProductsInCard([{
+        id, count: 1, price, clothesUrl, description,
+      }]);
+    } else if (productsInCard.find((item) => item.id === id)) {
+      // eslint-disable-next-line max-len
+      const updatedCard = productsInCard.map((item) => (item.id === id ? { ...item, count: item.count + 1 } : item));
+      setProductsInCard(updatedCard);
+    } else {
+      setProductsInCard((prevState) => [...prevState, {
+        id, count: 1, price, clothesUrl, description,
+      }]);
+    }
+    addToast(`added shopping card :${product.description}`, {
+      appearance: 'success',
+      autoDismiss: true,
+    });
+  };
 
   return (
     <ProductCart>
       <ProductImage src={product.clothesUrl} alt="selam" />
       <ProductBar>
-        <ProductPrice>{product.price}</ProductPrice>
+        <ProductPrice>
+          {product.price}
+          {' TRY'}
+        </ProductPrice>
       </ProductBar>
 
       <ProductBar>
-        <InfoProduct>Add To Cart</InfoProduct>
+        <InfoProduct
+          onClick={() => addCard()}
+        >
+          Add To Cart
+        </InfoProduct>
         <InfoProduct>See Details</InfoProduct>
         <InfoProduct onClick={() => changeItem()}>
           {favorite ? 'Remove From Favorites ' : 'Add To Favorites'}
@@ -74,7 +106,9 @@ const ProductImage = styled.img`
   width: 80%;
   justify-content: center;
   align-items: center;
-
+  @media screen and (max-width: 768px) and (min-width: 500px){
+    width: 25rem;
+  }
 `;
 const InfoProduct = styled.text`
   display: flex;
