@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
+import { ProductContext } from '../context/ProductContext';
 
-const BarItems = ({ isBarActive, setIsBarActive }) => {
+const BarItems = () => {
+  const { isBarActive, setIsBarActive } = useContext(ProductContext);
   const onChangeBar = (active) => setIsBarActive(!active);
   return (
     <BarItemContainer>

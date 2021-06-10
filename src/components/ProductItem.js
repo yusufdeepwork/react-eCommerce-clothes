@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useToasts } from 'react-toast-notifications';
 import { Link } from 'react-router-dom';
-import ProductContext from '../context/ProductContext';
+import { ProductContext } from '../context/ProductContext';
 
 const ProductItem = ({ product, favorite }) => {
   const { addToast } = useToasts();
@@ -80,7 +80,7 @@ const ProductItem = ({ product, favorite }) => {
         >
           Add To Cart
         </InfoProduct>
-        <ShowingDetails to={`/products${product.id}`}>
+        <ShowingDetails to={`/products/${product.id}`}>
           See Details
         </ShowingDetails>
         <InfoProduct onClick={() => changeItem()}>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ProductsContainer } from './Products';
-import ProductContext from '../context/ProductContext';
+import { ProductContext } from '../context/ProductContext';
 import ProductItem from '../components/ProductItem';
 
 const Favorites = () => {

@@ -1,19 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ProductContext from '../context/ProductContext';
+import axios from 'axios';
 import { CartProductsContainer } from './ShoppingCard';
+import DetailItem from '../components/DetailItem';
 
 const Details = () => {
-  const { data } = useContext(ProductContext);
+  const [detailItem, setDetailItem] = useState();
   const dynamicUrl = useParams();
   const { id } = dynamicUrl;
-  // eslint-disable-next-line no-console
-  console.log(id, 'id');
-  // eslint-disable-next-line no-console
-  console.log(data.find((product) => product.id === id), 'details');
+  const apiUrl = `https://60bfb0e797295a0017c4398c.mockapi.io/clothesImage/${id}`;
+
+  useEffect(() => {
+    axios.get(apiUrl).then((response) => {
+      setDetailItem(response.data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, [id]);
   return (
     <CartProductsContainer>
-      selam
+      <DetailItem product={detailItem} />
     </CartProductsContainer>
   );
 };

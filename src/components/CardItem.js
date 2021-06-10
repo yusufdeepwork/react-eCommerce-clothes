@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useToasts } from 'react-toast-notifications';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { NavLink as Link } from 'react-router-dom';
-import ProductContext from '../context/ProductContext';
+import { ProductContext } from '../context/ProductContext';
 
 const CardItem = ({ product }) => {
   const {

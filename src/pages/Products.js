@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import ProductItem from '../components/ProductItem';
-import ProductContext from '../context/ProductContext';
+import { ProductContext } from '../context/ProductContext';
 
 const Products = () => {
   const apiUrl = 'https://60bfb0e797295a0017c4398c.mockapi.io/clothesImage';

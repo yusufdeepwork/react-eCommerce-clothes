@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useAlert } from 'react-alert';
-import ProductContext from '../context/ProductContext';
+import { ProductContext } from '../context/ProductContext';
 import CardItem from '../components/CardItem';
 
 const ShoppingCard = () => {

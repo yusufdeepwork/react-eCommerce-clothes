@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import shoppingCart from '../assets/shopping.png';
+import { ProductContext } from '../context/ProductContext';
 
-const NavBar = ({ isBarActive, setIsBarActive }) => (
-  <Nav>
-    <NavLink to="/products"><img alt="logo" src={logo} width="80px" height="80%" /></NavLink>
-    <NavMenu>
-      <NavLink to="/products" activeStyle><h1>Products</h1></NavLink>
-      <NavLink to="/favorites" activeStyle><h1>Favorites</h1></NavLink>
-      <NavLink to="/contact" activeStyle><h1>Contact</h1></NavLink>
-    </NavMenu>
-    <NavLink to="/card" activeStyle>
-      <img alt="logo" src={shoppingCart} width="80px" height="80%" />
-    </NavLink>
-    <Bars onClick={() => setIsBarActive(!isBarActive)} />
-  </Nav>
-);
+const NavBar = () => {
+  const { isBarActive, setIsBarActive } = useContext(ProductContext);
+  return (
+    <Nav>
+      <NavLink to="/products"><img alt="logo" src={logo} width="80px" height="80%" /></NavLink>
+      <NavMenu>
+        <NavLink to="/products" activeStyle><h1>Products</h1></NavLink>
+        <NavLink to="/favorites" activeStyle><h1>Favorites</h1></NavLink>
+        <NavLink to="/contact" activeStyle><h1>Contact</h1></NavLink>
+      </NavMenu>
+      <NavLink to="/card" activeStyle>
+        <img alt="logo" src={shoppingCart} width="80px" height="80%" />
+      </NavLink>
+      <Bars onClick={() => setIsBarActive(!isBarActive)} />
+    </Nav>
+  );
+};
 export default NavBar;
 
 const Nav = styled.nav`
