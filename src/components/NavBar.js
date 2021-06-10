@@ -13,7 +13,7 @@ const NavBar = ({ isBarActive, setIsBarActive }) => (
       <NavLink to="/favorites" activeStyle><h1>Favorites</h1></NavLink>
       <NavLink to="/contact" activeStyle><h1>Contact</h1></NavLink>
     </NavMenu>
-    <NavLink to="/cart" activeStyle>
+    <NavLink to="/card" activeStyle>
       <img alt="logo" src={shoppingCart} width="80px" height="80%" />
     </NavLink>
     <Bars onClick={() => setIsBarActive(!isBarActive)} />

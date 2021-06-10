@@ -11,6 +11,7 @@ import Products from './pages/Products';
 import ProductContext from './context/ProductContext';
 import Favorites from './pages/Favorites';
 import ShoppingCard from './pages/ShoppingCard';
+import Details from './pages/Details';
 
 function App() {
   const [isBarActive, setIsBarActive] = useState(false);
@@ -38,6 +39,7 @@ function App() {
             ) : null}
             <Switch>
               <Route path="/products" exact component={Products} />
+              <Route path="/products:id" component={Details} />
               <Route path="/favorites" exact component={Favorites} />
               <Route path="/card" exact component={ShoppingCard} />
               <Redirect exact to="/products" />

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useToasts } from 'react-toast-notifications';
+import { Link } from 'react-router-dom';
 import ProductContext from '../context/ProductContext';
 
 const ProductItem = ({ product, favorite }) => {
@@ -79,7 +80,9 @@ const ProductItem = ({ product, favorite }) => {
         >
           Add To Cart
         </InfoProduct>
-        <InfoProduct>See Details</InfoProduct>
+        <ShowingDetails to={`/products${product.id}`}>
+          See Details
+        </ShowingDetails>
         <InfoProduct onClick={() => changeItem()}>
           {favorite ? 'Remove From Favorites ' : 'Add To Favorites'}
         </InfoProduct>
@@ -142,5 +145,23 @@ const ProductPrice = styled.text`
   @media screen and (max-width: 1300px){
     font-size: 1rem;
     padding: 0.5rem 0 0.5rem 0;
+  }
+`;
+const ShowingDetails = styled(Link)`
+  display: flex;
+  padding: 1rem;
+  font-size: 20px;
+  font-family: "Helvetica Neue",monospace;
+  justify-content: space-between;
+  :hover{
+    transition: 1s;
+    color: blue;
+    cursor: pointer;
+  }
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+  @media screen and (max-width: 1300px){
+    font-size: 1rem;
+    padding: 0 0.5rem;
   }
 `;

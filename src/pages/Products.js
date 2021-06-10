@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import ProductItem from '../components/ProductItem';
@@ -12,6 +12,7 @@ const Products = () => {
     axios.get(apiUrl).then((response) => {
       setData(response.data);
     }).catch((err) => {
+      // eslint-disable-next-line no-console
       console.log(err);
     });
   }, []);
