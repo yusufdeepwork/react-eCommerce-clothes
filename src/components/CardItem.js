@@ -51,7 +51,7 @@ const CardItem = ({ product }) => {
 
   return (
     <CardBox>
-      <CartProductImage src={product.clothesUrl} alt="selam" />
+      <CartProductImage src={product.clothesUrl} alt={`${product.description}`} />
       <ProductBar>
         <ProductPrice>{`Product Price : ${product.price} | Total Price: ${getTotalPrice()}`}</ProductPrice>
         <InfoProduct>{product.description}</InfoProduct>

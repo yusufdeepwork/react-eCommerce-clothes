@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
@@ -7,7 +7,18 @@ import shoppingCart from '../assets/shopping.png';
 import { ProductContext } from '../context/ProductContext';
 
 const NavBar = () => {
-  const { isBarActive, setIsBarActive } = useContext(ProductContext);
+  const { isBarActive, setIsBarActive, productsInCard } = useContext(ProductContext);
+  useEffect(() => {
+
+  }, [productsInCard]);
+  const calculateTotalPayment = () => {
+    let sum = 0;
+    // eslint-disable-next-line no-unused-expressions
+    productsInCard.length !== 0 ? productsInCard.forEach((item) => {
+      sum += parseInt(item.price, 10) * item.count;
+    }) : null;
+    return sum;
+  };
   return (
     <Nav>
       <NavLink to="/products"><img alt="logo" src={logo} width="80px" height="80%" /></NavLink>
@@ -16,8 +27,13 @@ const NavBar = () => {
         <NavLink to="/favorites" activeStyle><h1>Favorites</h1></NavLink>
         <NavLink to="/contact" activeStyle><h1>Contact</h1></NavLink>
       </NavMenu>
+
       <NavLink to="/card" activeStyle>
+        <ProductCardText>
+          {productsInCard.length !== 0 ? `Total Payment :  ${calculateTotalPayment()}` : null}
+        </ProductCardText>
         <img alt="logo" src={shoppingCart} width="80px" height="80%" />
+
       </NavLink>
       <Bars onClick={() => setIsBarActive(!isBarActive)} />
     </Nav>
@@ -70,4 +86,19 @@ const Bars = styled(FaBars)`
   width: 2.5rem;
   height: 100%;
   margin-right: 20px;
+`;
+const ProductCardText = styled.h1`
+    font-size: 24px;
+    color: red;
+    padding: 1rem;
+  text-align: center;
+  align-items: center;
+  transition: 2s;
+  animation-name: example;
+  animation-duration: 5s;
+  cursor: default;
+  @keyframes example {
+    from {color: white;}
+    to {color: red;}
+  }
 `;
