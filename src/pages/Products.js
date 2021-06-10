@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import ProductItem from '../components/ProductItem';
+import ProductContext from '../context/ProductContext';
 
 const Products = () => {
-  const [data, setData] = useState([]);
   const apiUrl = 'https://60bfb0e797295a0017c4398c.mockapi.io/clothesImage';
+  const { data, setData } = useContext(ProductContext);
 
   useEffect(() => {
     axios.get(apiUrl).then((response) => {

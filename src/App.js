@@ -16,12 +16,14 @@ function App() {
   const [isBarActive, setIsBarActive] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [productsInCard, setProductsInCard] = useState([]);
+  const [data, setData] = useState([]);
+
   useEffect(() => {
   }, [isBarActive]);
 
   return (
     <ProductContext.Provider value={{
-      favorites, setFavorites, productsInCard, setProductsInCard,
+      favorites, setFavorites, productsInCard, setProductsInCard, data, setData,
     }}
     >
       <BrowserRouter>
