@@ -1,12 +1,19 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import Loader from '../components/Loader';
 import ProductItem from '../components/ProductItem';
 import { ProductContext } from '../context/ProductContext';
 
 const Products = () => {
   const apiUrl = 'https://60bfb0e797295a0017c4398c.mockapi.io/clothesImage';
   const { data, setData, favorites } = useContext(ProductContext);
+  axios.get(apiUrl).then((response) => {
+    setData(response.data);
+  }).catch((err) => {
+    // eslint-disable-next-line no-console
+    console.log(err);
+  });
   useEffect(() => {
     axios.get(apiUrl).then((response) => {
       setData(response.data);
@@ -14,18 +21,22 @@ const Products = () => {
       // eslint-disable-next-line no-console
       console.log(err);
     });
-  }, []);
+  }, [data]);
+  console.log(data, 'data');
   return (
 
     <>
       <ProductsContainer>
-        {data.map((product) => (
-          <ProductItem
-            product={product}
-            favorite={!!favorites.find((favoriteItem) => favoriteItem.id === product.id)}
-          />
-        ))}
+        {data.length !== 0
+          ? data.map((product) => (
 
+            <ProductItem
+              product={product}
+              favorite={!!favorites.find((favoriteItem) => favoriteItem.id === product.id)}
+            />
+
+          ))
+          : <Loader />}
       </ProductsContainer>
     </>
   );
