@@ -7,6 +7,7 @@ import Products from './pages/Products';
 import Favorites from './pages/Favorites';
 import ShoppingCard from './pages/ShoppingCard';
 import Details from './pages/Details';
+import Contact from './pages/Contact';
 
 function App() {
   const { isBarActive } = useContext(ProductContext);
@@ -22,6 +23,8 @@ function App() {
         <Route path="/products/:id" component={Details} />
         <Route path="/favorites" exact component={Favorites} />
         <Route path="/card" exact component={ShoppingCard} />
+        <Route path="/contact" exact component={Contact} />
+
         <Redirect exact to="/products" />
       </Switch>
     </>
