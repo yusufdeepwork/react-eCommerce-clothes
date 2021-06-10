@@ -13,26 +13,29 @@ const ProductItem = ({ product, favorite }) => {
     <ProductCart>
       <ProductImage src={product.clothesUrl} alt={product.id} />
       <ProductBar>
-        <ProductPrice>
+        <ProductPrice is="webview">
           {product.price}
-          TRY
         </ProductPrice>
       </ProductBar>
       <ProductBar>
-        <InfoProduct onClick={() => {
-          addCard(product);
-          getAddCardToast(product, addToast);
-        }}
+        <InfoProduct
+          is="webview"
+          onClick={() => {
+            addCard(product);
+            getAddCardToast(product, addToast);
+          }}
         >
           Add To Cart
         </InfoProduct>
         <ShowingDetails to={`/products/${product.id}`}>See Details</ShowingDetails>
-        <InfoProduct onClick={() => {
-          changeItem(product, favorite);
-          // eslint-disable-next-line no-unused-expressions
-          favorite ? removeFavoriteToast(product, addToast)
-            : addFavoriteToast(product, addToast);
-        }}
+        <InfoProduct
+          is="webview"
+          onClick={() => {
+            changeItem(product, favorite);
+            // eslint-disable-next-line no-unused-expressions
+            favorite ? removeFavoriteToast(product, addToast)
+              : addFavoriteToast(product, addToast);
+          }}
         >
 
           {favorite ? 'Remove From Favorites ' : 'Add To Favorites'}

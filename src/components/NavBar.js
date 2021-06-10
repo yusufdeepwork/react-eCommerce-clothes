@@ -23,12 +23,12 @@ const NavBar = () => {
     <Nav>
       <NavLink to="/products"><img alt="logo" src={logo} width="80px" height="80%" /></NavLink>
       <NavMenu>
-        <NavLink to="/products" activeStyle><h1>Products</h1></NavLink>
-        <NavLink to="/favorites" activeStyle><h1>Favorites</h1></NavLink>
-        <NavLink to="/contact" activeStyle><h1>Contact</h1></NavLink>
+        <NavLink to="/products" active="true"><h1>Products</h1></NavLink>
+        <NavLink to="/favorites" active="true"><h1>Favorites</h1></NavLink>
+        <NavLink to="/contact" active="true"><h1>Contact</h1></NavLink>
       </NavMenu>
 
-      <NavLink to="/card" activeStyle>
+      <NavLink to="/card" active="true">
         <ProductCardText>
           {productsInCard.length !== 0 ? `Total Payment :  ${calculateTotalPayment()}` : null}
         </ProductCardText>
@@ -71,7 +71,7 @@ const NavLink = styled(Link)`
   }
   transition: all 0.2s ease-in-out;
   @media screen and (max-width: 768px){
-      display: ${(({ activeStyle }) => (activeStyle ? 'none' : null))}
+      display: ${(({ active }) => (active ? 'none' : null))}
   }
 `;
 const Bars = styled(FaBars)`
