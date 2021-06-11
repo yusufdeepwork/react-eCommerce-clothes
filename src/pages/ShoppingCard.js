@@ -40,11 +40,10 @@ export default ShoppingCard;
 export const CartProductsContainer = styled.div`
   cursor: default;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
-  align-self: center;
+  align-items: center;
   padding: 1vw 5vw;
 `;
 const TotalPayment = styled.div`
