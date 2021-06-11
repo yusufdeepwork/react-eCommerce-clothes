@@ -58,7 +58,6 @@ const eCommerceApp = ({ children }) => {
       }]);
     }
   };
-
   return (
     <ProductContext.Provider value={{
       favorites,
@@ -73,7 +72,7 @@ const eCommerceApp = ({ children }) => {
       addCard,
     }}
     >
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.URL ? process.env.URL : null}>
         <ToastProvider>
           <AlertProvider template={AlertTemplate} position={positions.TOP_RIGHT} timeout={3000}>
             {children}

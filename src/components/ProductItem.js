@@ -13,13 +13,12 @@ const ProductItem = ({ product, favorite }) => {
     <ProductCart>
       <ProductImage src={product.clothesUrl} alt={product.id} />
       <ProductBar>
-        <ProductPrice is="webview">
+        <ProductPrice>
           {product.price}
         </ProductPrice>
       </ProductBar>
       <ProductBar>
         <InfoProduct
-          is="webview"
           onClick={() => {
             addCard(product);
             getAddCardToast(product, addToast);
@@ -29,7 +28,6 @@ const ProductItem = ({ product, favorite }) => {
         </InfoProduct>
         <ShowingDetails to={`/products/${product.id}`}>See Details</ShowingDetails>
         <InfoProduct
-          is="webview"
           onClick={() => {
             changeItem(product, favorite);
             // eslint-disable-next-line no-unused-expressions
