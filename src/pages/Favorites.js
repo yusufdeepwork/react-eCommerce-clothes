@@ -32,4 +32,7 @@ const NoFavorite = styled.div`
   color: black;
   text-align: center;
   flex-direction: column;
+  @media screen and (max-width: 770px){
+    font-size: 30px;
+  }
 `;
