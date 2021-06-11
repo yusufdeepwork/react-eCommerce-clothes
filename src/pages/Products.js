@@ -54,4 +54,7 @@ export const ProductsContainer = styled.div`
     grid-template-columns: repeat(1, 1fr);
     grid-auto-rows: 35rem;
   }
+  @media screen and (max-width: 600px){
+    grid-auto-rows: 30rem;
+  }
 `;

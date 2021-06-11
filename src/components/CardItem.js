@@ -90,7 +90,8 @@ const CardBox = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  border: blue solid 2px;
+  background-color: lightcyan;
+  border-radius: 4rem;
   margin: 20px 0px;
   @media screen and (max-width: 425px){
     height: 20rem;
@@ -178,16 +179,21 @@ const ShowDetails = styled(Link)`
   padding: 1rem 1rem;
   font-size: 20px;
   font-family: "Fira Code Medium",monospace;
-  color: red;
-  border: red solid 1px;
   margin: 10px;
+  background-color: lightpink;
+  
   &.active {
     color:aquamarine ;
 
   }
-  :hover {
+  border-radius:10rem;
+  color: black;
+
+  :hover{
+    transition: 0.1s;
     color: blue;
-    border-color: blue;
+    cursor: pointer;
+    background-color: #5cf0ff;
   }
   transition: all 0.2s ease-in-out;
   @media screen and (min-width: 600px){

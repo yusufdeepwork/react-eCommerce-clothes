@@ -69,7 +69,8 @@ const DetailProductBox = styled.div`
   justify-content: space-evenly ;
   align-items: center;
   flex-direction: row;
-  border: blue solid 2px;
+  background-color: lightcyan;
+  border-radius: 4rem;
 
  
   @media screen and (max-width:650px){
@@ -77,6 +78,8 @@ const DetailProductBox = styled.div`
   }
   @media screen and (max-width:650px){
     height: 85vh;
+    border-radius: 1rem;
+    margin: 0;
   }
 `;
 const CartProductImage = styled.img`
@@ -116,8 +119,8 @@ const DetailInfoProduct = styled.text`
   @media screen and (max-width:650px) {
     padding: 0 1rem;  font-size: 1rem;
   }
-  @media screen and (max-width:650px) {
-    padding: 0 1rem;  font-size: 1rem;
+  @media screen and (max-width:400px) {
+    font-size: 0.75rem;
   }
 `;
 const DetailProductBar = styled.div`
@@ -128,12 +131,15 @@ const DetailProductBar = styled.div`
   @media screen and (max-width:1000px) and (min-width: 650px){
     flex-direction: column;
   }
+
 `;
 const InfoBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+
+ 
 `;
 const BackHome = styled(Link)`
  
@@ -149,13 +155,14 @@ const DetailInfoButton = styled.text`
   font-size: 1.5rem;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
-  border: blue 1px solid;
-  color: blue;
+  background-color: snow;
+  color: deepskyblue;
+  border-radius:10rem;
   :hover{
     transition: 0.1s;
-    color: deeppink;
-    border-color: deeppink;
-    cursor: ${({ link }) => (link ? 'pointer' : 'default')};
+    color: blue;
+    cursor: pointer;
+    background-color: #5cf0ff;
   }
   @media screen and (max-width:1000px){
     font-size: 1.5rem;
@@ -163,7 +170,7 @@ const DetailInfoButton = styled.text`
   @media screen and (max-width:650px) {
     padding: 0 1rem;  font-size: 1rem;
   }
-  @media screen and (max-width:650px) {
-    padding: 0 1rem;  font-size: 1rem;
+  @media screen and (max-width:400px) {
+    padding: 0 1rem;  font-size: 0.75rem;
   }
 `;

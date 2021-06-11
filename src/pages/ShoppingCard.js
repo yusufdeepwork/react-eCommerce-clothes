@@ -56,8 +56,12 @@ const TotalPayment = styled.div`
   font-size:60px;
   align-items:center;
   text-align:center;
-  border: darkblue 3px solid;
- 
+  background-color: lightcyan;
+  border-radius: 100rem;
+  margin-top: 5px;
+  @media screen and (max-width: 600px){
+    border-radius: 3rem;
+  }
 `;
 const TotalPaymentText = styled.text`
   font-size: 40px;

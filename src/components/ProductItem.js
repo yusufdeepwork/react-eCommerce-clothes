@@ -50,8 +50,8 @@ const ProductCart = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  border: 1.5px solid ${({favorite}) => favorite ? `deeppink` : `blue`};
+  border-radius: 30px;
+  background-color: ${({favorite}) => favorite ? `deepskyblue`: `lightcyan` };
   color: deepskyblue;
 `;
 const ProductImage = styled.img`
@@ -71,14 +71,15 @@ const InfoProduct = styled.text`
   font-size: 20px;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
-  border: blue 1px solid;
-  color: blue;
+  background-color: snow;
+  margin-bottom:5px;
+  border-radius:10rem;
+  
   :hover{
-    transition: 0.2s;
-    color: deeppink;
+    transition: 0.1s;
+    color: blue;
     cursor: pointer;
-    border: deeppink 1px solid;
-
+    background-color: #5cf0ff;
   }
   @media screen and (max-width: 1300px){
     font-size: 1rem;
@@ -106,28 +107,25 @@ const ProductPrice = styled.text`
   }
 `;
 const ShowingDetails = styled(Link)`
-  color: blue;
   display: flex;
   padding: 0.5rem;
-  margin: 0px 10px;
+  margin: 0 10px 5px 10px;
   font-size: 20px;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
-  border: blue 1px solid;
-  
-
+  background-color: snow;
+  border-radius:10rem;
+  color: deepskyblue;
   
   :hover{
-    transition: 0.2s;
-    color: deeppink;
+    transition: 0.1s;
+    color: blue;
     cursor: pointer;
-    border: deeppink 1px solid;
-  } /* blue colors for links too */
+    background-color: #5cf0ff;
+  }
   text-decoration: inherit; /* no underline */
   @media screen and (max-width: 1300px){
     font-size: 1rem;
     padding: 0 0.5rem;
   }
-  border: blue 1px solid;
-
 `;

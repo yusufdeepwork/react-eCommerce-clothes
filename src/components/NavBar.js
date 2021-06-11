@@ -29,9 +29,10 @@ const NavBar = () => {
       </NavMenu>
 
       <NavLink to="/card" active="true">
-        <ProductCardText>
-          {productsInCard.length !== 0 ? `Total Payment :  ${calculateTotalPayment()}` : null}
-        </ProductCardText>
+
+          {productsInCard.length !== 0 ? <ProductCardText>
+              {`Total Payment :  ${calculateTotalPayment()} TRY`}
+          </ProductCardText> : null}
         <img alt="logo" src={shoppingCart} width="80px" height="80%" />
 
       </NavLink>
@@ -89,16 +90,25 @@ const Bars = styled(FaBars)`
 `;
 const ProductCardText = styled.h1`
     font-size: 24px;
-    color: red;
+    color: royalblue;
     padding: 1rem;
+  
   text-align: center;
   align-items: center;
   transition: 2s;
+  margin-right: 10px; 
   animation-name: example;
-  animation-duration: 5s;
+  animation-duration: 2s;
   cursor: default;
+  border-radius: 10rem;
+  background-color: lightblue;
   @keyframes example {
-    from {color: white;}
-    to {color: red;}
+    from {color: red;}
+    to {color: royalblue;}
+  }
+  @media screen and (max-width: 1500px){
+    font-size: 15px;
+    padding: 0.2rem;
+    width: 6rem;
   }
 `;
