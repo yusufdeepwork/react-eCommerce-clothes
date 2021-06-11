@@ -16,21 +16,21 @@ const ShoppingCard = () => {
     }) : null;
     return sum;
   };
-
+  const totalPayment = calculateTotalPayment()
   return (
     <CartProductsContainer>
       <TotalPayment>
         <TotalPaymentText>
           Shopping Total Payment :
-          {` ${calculateTotalPayment()}`}
+          {` ${totalPayment}`}
           {currency}
         </TotalPaymentText>
-        <PayButton
-          type="button"
-          onClick={() => alert.error('We are sorry, we are closed. Please Try again after.')}
+        {totalPayment ? <PayButton
+            type="button"
+            onClick={() => alert.error('We are sorry, we are closed. Please Try again after.')}
         >
           Pay
-        </PayButton>
+        </PayButton> : null}
       </TotalPayment>
       {productsInCard.map((product) => <CardItem product={product} />)}
     </CartProductsContainer>
