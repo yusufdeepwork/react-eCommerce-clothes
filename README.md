@@ -7,8 +7,8 @@
 #  Website Preview
 ## Desktop Preview
 ![Image of e-Commerce](public/webSite.png)
-## Mobile
-![Image of e-Commerce](public/mobil.png)
+## Mobile Preview
+![Image of e-Commerce](public/mobile.png)
 
 
 
