@@ -10,7 +10,7 @@ const ProductItem = ({ product, favorite }) => {
   const { addToast } = useToasts();
 
   return (
-    <ProductCart>
+    <ProductCart favorite={favorite}>
       <ProductImage src={product.clothesUrl} alt={product.id} />
       <ProductBar>
         <ProductPrice>
@@ -50,9 +50,9 @@ const ProductCart = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: black;
-  border: white solid 3px;
-  color: white;
+
+  border: 1.5px solid ${({favorite}) => favorite ? `deeppink` : `blue`};
+  color: deepskyblue;
 `;
 const ProductImage = styled.img`
   padding: 1rem 0 0 0;
@@ -72,10 +72,13 @@ const InfoProduct = styled.text`
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
   border: blue 1px solid;
+  color: blue;
   :hover{
-    transition: 1s;
-    color: blue;
+    transition: 0.2s;
+    color: deeppink;
     cursor: pointer;
+    border: deeppink 1px solid;
+
   }
   @media screen and (max-width: 1300px){
     font-size: 1rem;
@@ -96,25 +99,30 @@ const ProductPrice = styled.text`
   font-size: 1.5rem;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
-
+  color: black;
   @media screen and (max-width: 1300px){
     font-size: 1rem;
     padding: 0.5rem 0 0.5rem 0;
   }
 `;
 const ShowingDetails = styled(Link)`
+  color: blue;
   display: flex;
   padding: 0.5rem;
   margin: 0px 10px;
   font-size: 20px;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
+  border: blue 1px solid;
+  
+
+  
   :hover{
-    transition: 1s;
-    color: blue;
+    transition: 0.2s;
+    color: deeppink;
     cursor: pointer;
-  }
-  color: inherit; /* blue colors for links too */
+    border: deeppink 1px solid;
+  } /* blue colors for links too */
   text-decoration: inherit; /* no underline */
   @media screen and (max-width: 1300px){
     font-size: 1rem;

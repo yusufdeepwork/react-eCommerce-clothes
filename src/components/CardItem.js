@@ -65,7 +65,7 @@ const CardItem = ({ product }) => {
           }}
           />
         </ChangeItem>
-        <h2>{productsInCard.find((item) => item.id === product.id).count}</h2>
+        <ProductCardCount>{productsInCard.find((item) => item.id === product.id).count}</ProductCardCount>
         <ChangeItem>
           <FaMinus color="red" onClick={() => {
             decreaseProductInCard();
@@ -90,9 +90,8 @@ const CardBox = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  background: black;
-  border: white solid 3px;
-  color: white;
+  border: blue solid 2px;
+  margin: 20px 0px;
   @media screen and (max-width: 425px){
     height: 20rem;
   }
@@ -180,11 +179,29 @@ const ShowDetails = styled(Link)`
   font-size: 20px;
   font-family: "Fira Code Medium",monospace;
   color: red;
+  border: red solid 1px;
+  margin: 10px;
   &.active {
     color:aquamarine ;
+
+  }
+  :hover {
+    color: blue;
+    border-color: blue;
   }
   transition: all 0.2s ease-in-out;
   @media screen and (min-width: 600px){
     display: none;
   }
 `;
+const  ProductCardCount = styled.text`
+  cursor: default;
+  font-size: 70px;
+  color: black;
+  margin: 1.5rem 0;
+  font-family: "Fira Code Medium",serif;
+  @media screen and (max-width: 700px){
+    font-size: 50px;
+    margin: 10px;
+  }
+`

@@ -69,9 +69,8 @@ const DetailProductBox = styled.div`
   justify-content: space-evenly ;
   align-items: center;
   flex-direction: row;
-  background: black;
-  border: white solid 3px;
-  color: white;
+  border: blue solid 2px;
+
  
   @media screen and (max-width:650px){
     flex-direction: column;
@@ -151,9 +150,11 @@ const DetailInfoButton = styled.text`
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
   border: blue 1px solid;
+  color: blue;
   :hover{
     transition: 0.1s;
-    color: blue;
+    color: deeppink;
+    border-color: deeppink;
     cursor: ${({ link }) => (link ? 'pointer' : 'default')};
   }
   @media screen and (max-width:1000px){

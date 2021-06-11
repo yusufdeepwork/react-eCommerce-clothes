@@ -56,7 +56,7 @@ const TotalPayment = styled.div`
   font-size:60px;
   align-items:center;
   text-align:center;
-  border: darkblue 5px solid;
+  border: darkblue 3px solid;
  
 `;
 const TotalPaymentText = styled.text`
