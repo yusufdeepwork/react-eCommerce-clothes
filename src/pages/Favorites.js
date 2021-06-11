@@ -9,7 +9,7 @@ const Favorites = () => {
   return (
     favorites.length === 0 ? (
       <NoFavorite>
-        <text>You Dont have yet favorite Product.</text>
+        <text>You Dont have favorite Product yet.</text>
         <text>You can look products. We are sure you will love.</text>
       </NoFavorite>
     ) : (
@@ -24,7 +24,7 @@ export default Favorites;
 const NoFavorite = styled.div`
   font-family: "Fira Code Medium",monospace;
   display: flex;
-  height: 100vh;
+  height: 80vh;
   font-size:50px;
   font-weight: bold;
   justify-content: space-evenly;

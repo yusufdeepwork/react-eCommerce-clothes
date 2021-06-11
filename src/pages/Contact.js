@@ -12,7 +12,7 @@ export default Favorites;
 const ContactInfos = styled.div`
   font-family: "Fira Code Medium",monospace;
   display: flex;
-  height: 100vh;
+  height: 80vh;
   font-size:50px;
   font-weight: bold;
   justify-content: space-evenly;
