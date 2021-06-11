@@ -51,7 +51,7 @@ const ProductCart = styled.div`
   align-items: center;
   flex-direction: column;
   border-radius: 30px;
-  background-color: ${({favorite}) => favorite ? `deepskyblue`: `lightcyan` };
+  background-color: ${({favorite}) => favorite ? `lightcyan`: `#f2f2f2` };
   color: deepskyblue;
 `;
 const ProductImage = styled.img`

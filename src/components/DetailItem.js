@@ -69,7 +69,7 @@ const DetailProductBox = styled.div`
   justify-content: space-evenly ;
   align-items: center;
   flex-direction: row;
-  background-color: lightcyan;
+  background-color: #f2f2f2;
   border-radius: 4rem;
 
  

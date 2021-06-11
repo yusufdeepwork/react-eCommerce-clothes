@@ -90,7 +90,7 @@ const CardBox = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  background-color: lightcyan;
+  background-color: #f2f2f2;
   border-radius: 4rem;
   margin: 20px 0px;
   @media screen and (max-width: 425px){
