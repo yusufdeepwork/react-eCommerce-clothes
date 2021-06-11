@@ -72,7 +72,7 @@ const eCommerceApp = ({ children }) => {
       addCard,
     }}
     >
-      <BrowserRouter basename={process.env.URL ? process.env.URL : null}>
+      <BrowserRouter>
         <ToastProvider>
           <AlertProvider template={AlertTemplate} position={positions.TOP_RIGHT} timeout={3000}>
             {children}

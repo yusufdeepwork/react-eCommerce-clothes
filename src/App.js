@@ -21,11 +21,11 @@ function App() {
       <Switch>
         <Route path="/products" exact component={Products} />
         <Route path="/products/:id" component={Details} />
-        <Route path="/favorites" exact component={Favorites} />
-        <Route path="/card" exact component={ShoppingCard} />
-        <Route path="/contact" exact component={Contact} />
+        <Route path="/favorites" component={Favorites} />
+        <Route path="/card" component={ShoppingCard} />
+        <Route path="/contact" component={Contact} />
 
-        <Redirect exact to="/products" />
+        <Redirect to="/products" />
       </Switch>
     </>
 
