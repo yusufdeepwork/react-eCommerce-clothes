@@ -14,7 +14,7 @@ const ProductItem = ({ product, favorite }) => {
       <ProductImage src={product.clothesUrl} alt={product.id} />
       <ProductBar>
         <ProductPrice>
-          {product.price}
+          {product.price}<text> TRY</text>
         </ProductPrice>
       </ProductBar>
       <ProductBar>
