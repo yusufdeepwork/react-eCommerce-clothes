@@ -60,6 +60,7 @@ const ProductImage = styled.img`
   width: 80%;
   justify-content: center;
   align-items: center;
+  object-fit: contain;
   @media screen and (max-width: 768px) and (min-width: 500px){
     width: 25rem;
   }
@@ -70,6 +71,7 @@ const InfoProduct = styled.text`
   font-size: 20px;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
+  border: blue 1px solid;
   :hover{
     transition: 1s;
     color: blue;
@@ -84,6 +86,8 @@ const ProductBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 10px;
+  
 `;
 
 const ProductPrice = styled.text`
@@ -100,7 +104,8 @@ const ProductPrice = styled.text`
 `;
 const ShowingDetails = styled(Link)`
   display: flex;
-  padding: 1rem;
+  padding: 0.5rem;
+  margin: 0px 10px;
   font-size: 20px;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
@@ -115,4 +120,6 @@ const ShowingDetails = styled(Link)`
     font-size: 1rem;
     padding: 0 0.5rem;
   }
+  border: blue 1px solid;
+
 `;

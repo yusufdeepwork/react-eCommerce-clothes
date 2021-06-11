@@ -25,7 +25,7 @@ const DetailItem = ({ product, favorite }) => {
               <DetailInfoProduct>{`Price : ${product.price}`}</DetailInfoProduct>
             </InfoBar>
             <DetailProductBar>
-              <DetailInfoProduct
+              <DetailInfoButton
                 link
                 onClick={() => {
                   addCard(product);
@@ -33,8 +33,8 @@ const DetailItem = ({ product, favorite }) => {
                 }}
               >
                 Add to Card
-              </DetailInfoProduct>
-              <DetailInfoProduct
+              </DetailInfoButton>
+              <DetailInfoButton
                 link
                 onClick={() => {
                   changeItem(product, favorite);
@@ -45,8 +45,10 @@ const DetailItem = ({ product, favorite }) => {
               >
                 {' '}
                 {favorite ? 'Remove From Favorites ' : 'Add To Favorites'}
-              </DetailInfoProduct>
-              <BackHome to="/products" link>Back to Products Page</BackHome>
+              </DetailInfoButton>
+              <DetailInfoButton  link>
+                <BackHome to="/products">Back to Products Page</BackHome>
+               </DetailInfoButton>
             </DetailProductBar>
           </InfoBar>
         </>
@@ -85,6 +87,8 @@ const CartProductImage = styled.img`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  object-fit: contain;
+
   @media screen and (max-width: 1350px){
     width: 20rem;
   }
@@ -102,7 +106,6 @@ const DetailInfoProduct = styled.text`
   font-size: 2rem;
   font-family: "Helvetica Neue",monospace;
   justify-content: space-between;
-
   :hover{
     transition: 0.1s;
     color: blue;
@@ -112,10 +115,10 @@ const DetailInfoProduct = styled.text`
     font-size: 1.5rem;
   }
   @media screen and (max-width:650px) {
-    padding: 0rem 1rem;  font-size: 1rem;
+    padding: 0 1rem;  font-size: 1rem;
   }
   @media screen and (max-width:650px) {
-    padding: 0rem 1rem;  font-size: 1rem;
+    padding: 0 1rem;  font-size: 1rem;
   }
 `;
 const DetailProductBar = styled.div`
@@ -134,14 +137,20 @@ const InfoBar = styled.div`
   flex-direction: column;
 `;
 const BackHome = styled(Link)`
-  cursor: default;
-  display: flex;
-  padding: 2rem;
-  font-size: 2rem;
-  font-family: "Helvetica Neue",monospace;
-  justify-content: space-between;
+ 
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */
+  
+`;
+const DetailInfoButton = styled.text`
+  cursor: default;
+  display: flex;
+  padding: 1rem;
+  margin: 10px 5px;
+  font-size: 1.5rem;
+  font-family: "Helvetica Neue",monospace;
+  justify-content: space-between;
+  border: blue 1px solid;
   :hover{
     transition: 0.1s;
     color: blue;
@@ -151,6 +160,9 @@ const BackHome = styled(Link)`
     font-size: 1.5rem;
   }
   @media screen and (max-width:650px) {
-    padding: 1rem;  font-size: 1rem;
+    padding: 0 1rem;  font-size: 1rem;
+  }
+  @media screen and (max-width:650px) {
+    padding: 0 1rem;  font-size: 1rem;
   }
 `;

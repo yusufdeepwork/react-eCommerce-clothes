@@ -59,7 +59,7 @@ const CardItem = ({ product }) => {
       </ProductBar>
       <CardChanges>
         <ChangeItem>
-          <FaPlus onClick={() => {
+          <FaPlus color="blue" onClick={() => {
             increaseProductInCard();
             changeItem(true);
           }}
@@ -67,7 +67,7 @@ const CardItem = ({ product }) => {
         </ChangeItem>
         <h2>{productsInCard.find((item) => item.id === product.id).count}</h2>
         <ChangeItem>
-          <FaMinus onClick={() => {
+          <FaMinus color="red" onClick={() => {
             decreaseProductInCard();
             changeItem(false);
           }}
@@ -105,6 +105,7 @@ const CartProductImage = styled.img`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  object-fit: contain;
   @media screen and (max-width: 1350px){
     width: 20rem;
   }
