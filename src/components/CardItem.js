@@ -55,7 +55,7 @@ const CardItem = ({ product }) => {
       <ProductBar>
         <ProductPrice>{`Product Price : ${product.price} | Total Price: ${getTotalPrice()}`}</ProductPrice>
         <InfoProduct>{product.description}</InfoProduct>
-        <ShowDetails to={`/products${product.id}`}> See Details</ShowDetails>
+        <ShowDetails to={`/products/${product.id}`}> See Details</ShowDetails>
       </ProductBar>
       <CardChanges>
         <ChangeItem>
